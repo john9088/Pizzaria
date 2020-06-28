@@ -2,19 +2,26 @@
 
 {% block navbar %}
 
+<nav class="nav-bar">
+	<h2 style="margin-left: 5%;">PizzaRia</h2>
+    <h2 style="margin-left: 70%;">Welcome Admin</h3>
+	
+</nav>
+
 {% endblock %}
 
 {% block content %}
 
-<div class="admin-login-page">
-	<div class="admin-login-side">
-	    <div class="admin-login-text">
+<div class="login-page">
+	<div class="login-side">
+	    <div class="login-text">
 	        <h2>Admin<br> Login Page</h2>
 	        <p>Login here to access.</p>
 	    </div>
 	</div>
-	<div class="admin-login-input">
-	    <div class="admin-login-form">
+	
+	<div class="login-input">
+	    <div class="login-form">
 	       <form method="POST" action="/authenticateAdmin/">
 	       		{% csrf_token %}
 				<div class="form-group">
@@ -28,7 +35,7 @@
 
 				<div class="button-container-home">
 			        <button style="margin-top: 1.5vh" type="submit" class="button button1"> 
-			            <a href="/adminlogout/">Login</a>
+			            Login
 			        </button>
 				</div>
 

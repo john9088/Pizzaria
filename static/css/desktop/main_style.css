@@ -23,6 +23,10 @@ body {
   z-index: 9999;
 }
 
+.cust-nav-bar{
+  justify-content: space-between;
+}
+
 .button-container-home {
     position: relative;
     display: flex;
@@ -71,38 +75,40 @@ body {
   }
 
 
-.admin-login-page{
-	position: relative;
-	height: 100vh;
+.login-page{
+  position: relative;
+  top:8vh;
+	height: 92vh;
 	width: 100%;
-	display: flex;
+  display: flex;
+  overflow-y: hidden;
 }
 
-.admin-login-side{
+.login-side{
 	height: 100%;
 	width: 40%;
-	background-color: #000;
+  background-color: rgba(0,0,0);
+  color:orange;
 	position: relative;
 	align-self: center;
 	font-size: 1.5vw;
 }
-.admin-login-text{
+.login-text{
 	position: relative;
 	margin: 35vh 10vw;
-	color: #fff;
 }
-.admin-login-text h2{
+.login-text h2{
 	font-size: 4vw;
 }
 
-.admin-login-input{
+.login-input{
 	height: 100%;
 	position: relative;
 	
 	align-self: center;
 }
 
-.admin-login-form{
+.login-form{
     position: relative;
     margin: 30vh 0% 0% 15vw;
 
@@ -129,11 +135,11 @@ body {
   top: 10vh;
 }
 
-input[type=number]::-webkit-inner-spin-button, 
+/* input[type=number]::-webkit-inner-spin-button, 
 input[type=number]::-webkit-outer-spin-button { 
   -webkit-appearance: none; 
   margin: 0; 
-}
+} */
 .customer-signup{
   width: 100%;
   height: 100vh;
@@ -198,7 +204,37 @@ input[type=number]::-webkit-outer-spin-button {
   width: 8vw;
 }
 
-.user-view{
+.show-pizza-cust{
   position: relative;
-  top:8vh;
+  width: 50vw;
+  height: fit-content;
+  top:10vh;
+  margin: auto;
 }
+
+.show-pizza-cust table td{
+  padding:3vh 6vw;
+}
+.show-pizza-cust table tr input[type=number]{
+  width: 4vw;
+}
+
+.cust-address{
+  position: relative;
+  width: 100%;
+  height: 5vh;
+  margin-top: 5vh;
+  display: flex;
+  flex-direction: row;
+}
+
+.cust-address input[type=text]{
+  border: solid 2px #000;
+  width:70%;
+}
+/* .show-pizza-cust table tr input[type=number]::-webkit-inner-spin-button, 
+.show-pizza-cust table tr input[type=number]::-webkit-outer-spin-button { 
+  -webkit-appearance: initial; 
+  margin: 0; 
+} */
+

@@ -65,18 +65,25 @@ def userLoginView(request):
 	return render(request,'pizzariaapp/userloginview.html')
 
 def authenticateUser(request):
-	userName = request.POST['username']
-	userPassword = request.POST['userpassword']
-
-	if User.objects.filter(username = userName).exists():
+	username = request.POST['username']
+	password = request.POST['userpassword']
+	user = authenticate(username = username, password = password)
+	if (user is not None):
+		login(request,user)
 		return redirect('userwelcomepage')
+
 	else:
-		messages.add_message(request,messages.ERROR,"Invalid Credentials")
+		messages.add_message(request,messages.ERROR,"Invalid Credential")
 		return redirect('userloginview')
 
 def customerWelcomePage(request):
-	return render(request,'pizzariaapp/welcomeuser.html')
+	username = request.user.username
+	pizzas = PizzaModel.objects.all()
+	context = {'username':username,'pizzas':pizzas}
+	return render(request,'pizzariaapp/welcomeuser.html',context)
 
 def logoutUser(request):
+	print(request.user)
 	logout(request)
+	#return redirect('userwelcomepage')
 	return redirect('homepageview')
