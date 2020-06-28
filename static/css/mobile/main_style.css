@@ -1,0 +1,52 @@
+@media screen and (orientation: portrait),(max-width: 650px){
+	
+	.admin-login-page {
+    	flex-direction: column;
+	}
+	.admin-login-side {
+	    height: 40%;
+	    width: 100%;
+	    font-size: 2vh;
+	}
+
+	.admin-login-text {
+    margin: 10vh 10vw;
+	}
+
+	.admin-login-text h2 {
+    	font-size: 5vh;
+	}
+
+	.admin-login-input {
+	    height: 60%;
+	    width: 100%;
+    
+	}
+
+	.admin-login-form {
+	    position: relative;
+	    margin: 12vh 0% 0% 12vw;
+	}
+
+	.form-group {
+    	font-size: 4.5vh;
+	}
+
+	.form-group input {
+	    width: 70vw;
+	    padding: 0.5vh;
+	    font-size: 5.5vw;
+	    height: 6vh;
+	    border-radius: 1.25vh;
+	}
+
+	.admin-login-form button{
+	    margin-top: 1.5vh;
+	    width: 25vw;
+	    /* margin: auto; */
+	    height: 5vh;
+	    position: relative;
+	}
+	
+	
+}

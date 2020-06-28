@@ -1,0 +1,21 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width ,height=device-height,initial-scale=1, minimum-scale=1, maximum-scale=1">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge"> 
+	<title>PizzaRia</title>
+	<link rel="stylesheet" type="text/css" href="{% static '/css/desktop/main_style.css' %}">
+	<link rel="stylesheet" type="text/css" href="{% static '/css/mobile/main_style.css' %}">
+</head>
+
+{% block navbar %}
+{% endblock %}
+
+
+<body>
+	{% block content%}
+	{% endblock %}
+</body>
+</html>

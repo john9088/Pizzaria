@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+
+{% block navbar %}
+<nav class="nav-bar">
+	<h2 style="margin-left: 5%;">PizzaRia</h2>
+	<div class="button-container-home" style="left: 75%;">
+        <button  class="button button1"> 
+            <a href="/">Signup</a>
+        </button>
+	</div>
+</nav>
+{% endblock %}
+
+{% block content %}
+<div class="user-view">
+    <form method="POST" action="/authenticateUser/">
+        {% csrf_token %}
+        <input type="text" name="username" > 
+        <input type="password" name="userpassword" > 
+        <input type="submit" value="submit" >
+    </form>
+<div>
+
+{% for message in messages %}
+<p style="text-align: center;color:red;position:absolute;font-size:3vw">{{ message }}</p>
+{% endfor %}
+{% endblock %}
