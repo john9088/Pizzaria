@@ -111,6 +111,12 @@ def placeOrder(request):
 		messages.add_message(request,messages.ERROR,"Order Placed")
 	return redirect('userwelcomepage')
 
+def showOrders(request):
+	username = request.user.username
+	orders = CustomerOrder.objects.filter(username = request.user.username)
+	context = {'orders':orders,'username':username}
+	return render(request,"pizzariaapp/showorders.html",context)
+
 def logoutUser(request):
 	print(request.user)
 	logout(request)

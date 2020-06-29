@@ -1,0 +1,37 @@
+{% extends 'base.html' %}
+
+{% block navbar %}
+<nav class="cust-nav-bar nav-bar">
+    <h2>Hi {{ username }}, your Orders</h2>
+	<h2 >PizzaRia</h2>
+	<div class="button-container-home">
+        <button onclick="goBack()" class="button button1"> 
+            Back
+        </button>
+	</div>
+</nav>
+{% endblock %}
+
+{% block content %}
+<div class="customer-orders">
+    {% for i in  orders%}
+    <table>
+        <tr>
+            <td><h3>Phone Number: </h3> <p>{{i.phoneno}}</p></td>
+        </tr>
+        <tr>
+            <td><h3>Addess: </h3><p>{{i.address}}</p></td>
+        </tr>
+        <tr>
+            <td><h3>Orders: </h3><p>{{i.order}}</p></td>
+        </tr>
+        <tr>
+            <td><h3>Total Cost: </h3><p>{{i.totalcost}}</p></td>
+        </tr>
+        <tr>
+            <td><h3>Status: </h3><p>{{i.status}}</p></td>
+        </tr>
+    </table>
+    {% endfor %}
+</div>
+{% endblock %}

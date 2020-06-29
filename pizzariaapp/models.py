@@ -15,3 +15,4 @@ class CustomerOrder(models.Model):
 	address = models.CharField(max_length = 25)
 	order =  models.CharField(max_length = 30)
 	totalcost =  models.CharField(max_length = 10)
+	status = models.CharField(max_length = 10)

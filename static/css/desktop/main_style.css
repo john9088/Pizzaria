@@ -232,6 +232,23 @@ input[type=number]::-webkit-outer-spin-button {
   border: solid 2px #000;
   width:70%;
 }
+
+.customer-orders table{
+  position:relative;
+  width:80%;
+  top: 6vh;
+  padding-top: 2vh;
+}
+
+.customer-orders table tr td{
+  border: 3px solid #000
+}
+
+/* .customer-orders table tr{
+  
+  width:10vw;
+} */
+
 /* .show-pizza-cust table tr input[type=number]::-webkit-inner-spin-button, 
 .show-pizza-cust table tr input[type=number]::-webkit-outer-spin-button { 
   -webkit-appearance: initial; 
