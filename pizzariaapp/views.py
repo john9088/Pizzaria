@@ -77,10 +77,39 @@ def authenticateUser(request):
 		return redirect('userloginview')
 
 def customerWelcomePage(request):
+	if not request.user.is_authenticated:
+		return redirect('userloginview')
+
 	username = request.user.username
 	pizzas = PizzaModel.objects.all()
 	context = {'username':username,'pizzas':pizzas}
 	return render(request,'pizzariaapp/welcomeuser.html',context)
+
+def placeOrder(request):
+	if not request.user.is_authenticated:
+		return redirect('userloginview')
+
+	username = request.user.username
+	phoneno = CustomerModel.objects.filter(userid = request.user.id)[0].userphoneno
+	address = request.POST['address']
+	ordereditems = ''
+	totalcost = '0'
+	
+	
+	for pizza in PizzaModel.objects.all():
+		pizzaid = pizza.id
+		pizzaname = pizza.name
+		pizzaprice = pizza.price
+		pizzaqty = request.POST.get(str(pizzaid),'')
+
+		if((pizzaqty is not None) and (pizzaqty != '') and (pizzaqty != '0')):
+			totalcost = str(int(totalcost) + int(pizzaprice)* int(pizzaqty))
+			ordereditems = ordereditems + 'Name: '+str(pizzaname)+ '| Pizza Price: '+str(pizzaprice)+'| Pizza Quantity:'+str(pizzaqty)+','+'\n'
+
+	if((totalcost is not None) and (totalcost != '0')):
+		CustomerOrder(username = username,phoneno = str(phoneno),address=  str(address),order = ordereditems,totalcost = totalcost).save()
+		messages.add_message(request,messages.ERROR,"Order Placed")
+	return redirect('userwelcomepage')
 
 def logoutUser(request):
 	print(request.user)

@@ -14,30 +14,37 @@
 
 {% block content %}
 <div class="show-pizza-cust">
-    <table>
-        <tr>
-            <th><h4>Pizza</h4></th>
-            <th><h4>Cost</h4></th>
-            <th><h4>Quantity</h4></th>
-        </tr>
+    {%for message in messages%}
+    <p style="text-align:center; color:red">{{message}}</p>
+    {% endfor %}
 
-        {% for i in pizzas %}
-        <tr>
-            <td>{{ i.name }}</td>
-            <td>Rs.{{ i.price }}</td>
-            <td><input type="number" placeholder="0"></td>
-        </tr>
-        {% endfor %}
-    </table>
-    <div class="cust-address">
-    
-        <input type="text" name="address" placeholder="Enter Address..">
-        <div class="button-container-home" style="margin-left:10%;"> 
-            <button  type="submit" class="button button1"> 
-                Order
-            </button>
-		</div>
-    </div>
+    <form method="POST" action="/placeorder/">
+        {% csrf_token %}
+        <table>
+            <tr>
+                <th><h4>Pizza</h4></th>
+                <th><h4>Cost</h4></th>
+                <th><h4>Quantity</h4></th>
+            </tr>
+
+            {% for i in pizzas %}
+            <tr>
+                <td>{{ i.name }}</td>
+                <td>Rs.{{ i.price }}</td>
+                <td><input type="number" min="0" name= "{{i.id}}" placeholder="0"></td>
+            </tr>
+            {% endfor %}
+        </table>
+        <div class="cust-address">
+        
+            <input type="text" name="address" placeholder="Enter Address..">
+            <div class="button-container-home" style="margin-left:10%;"> 
+                <button  type="submit" class="button button1"> 
+                    Order
+                </button>
+            </div>
+        </div>
+    </form>
 </div>
 
 

@@ -15,4 +15,5 @@ urlpatterns = [
     path('authenticateUser/',authenticateUser),
     path('customer/welcome/',customerWelcomePage,name='userwelcomepage'),
     path('customer/logout/',logoutUser),
+    path('placeorder/',placeOrder)
 ]
