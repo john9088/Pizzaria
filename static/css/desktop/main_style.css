@@ -30,6 +30,7 @@ body {
 .button-container-home {
     position: relative;
     display: flex;
+    flex-direction: row;
     top: 5%;
     width: auto;
 }

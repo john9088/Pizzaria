@@ -1,0 +1,54 @@
+{% extends 'base.html' %}
+
+{% block navbar %}
+<nav class="cust-nav-bar nav-bar">
+    <h2>Hi Admin, your Orders</h2>
+	<h2 >PizzaRia</h2>
+	<div class="button-container-home">
+        <button  class="button button1"> 
+            <a href = '/admin/adminhome/'>Back</a>
+        </button>
+	</div>
+</nav>
+{% endblock %}
+
+{% block content %}
+<div class="customer-orders">
+    {% for i in  orders%}
+    <table>
+        <tr>
+            <td><h3>User Name: </h3> <p>{{i.username}}</p></td>
+        </tr>
+        <tr>
+            <td><h3>Phone Number: </h3> <p>{{i.phoneno}}</p></td>
+        </tr>
+        <tr>
+            <td><h3>Addess: </h3><p>{{i.address}}</p></td>
+        </tr>
+        <tr>
+            <td><h3>Orders: </h3><p>{{i.order}}</p></td>
+        </tr>
+        <tr>
+            <td><h3>Total Cost: </h3><p>{{i.totalcost}}</p></td>
+        </tr>
+        <tr>
+            <td><h3>Status: </h3><p><b>{{i.status}}</b></p></td>
+        </tr>
+        <tr>
+            <td>
+                <h3>Select Order Status:</h3>
+                <div style="margin-top:2vh" class="button-container-home">     
+                    <button style="margin-left:1vw " class="button button1"> 
+                        <a href = '/acceptorder/{{i.id}}'>Accepted</a>
+                    </button>
+                    <button style="margin-left:4vw" class="button button1"> 
+                        <a href = '/rejectorder/{{i.id}}'>Rejected</a>
+                    </button>
+                </div>
+
+            </td>
+        </tr>
+    </table>
+    {% endfor %}
+</div>
+{% endblock %}

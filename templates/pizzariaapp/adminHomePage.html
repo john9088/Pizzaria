@@ -14,6 +14,7 @@
 
 {% block content %}	
 	<div class="admin-add-pizza">
+		<h3 style="text-align:center"><a Style="text-decoration:none" href="/adminshoworder/">Check Order</a><h3>
 		<form method="POST" action="/addadminpizza/">
 			{% csrf_token %}
 			<input type="text" placeholder="Pizza" name="pizza">

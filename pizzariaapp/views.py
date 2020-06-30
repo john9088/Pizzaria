@@ -107,7 +107,7 @@ def placeOrder(request):
 			ordereditems = ordereditems + 'Name: '+str(pizzaname)+ '| Pizza Price: '+str(pizzaprice)+'| Pizza Quantity:'+str(pizzaqty)+','+'\n'
 
 	if((totalcost is not None) and (totalcost != '0')):
-		CustomerOrder(username = username,phoneno = str(phoneno),address=  str(address),order = ordereditems,totalcost = totalcost).save()
+		CustomerOrder(username = username,phoneno = str(phoneno),address=  str(address),order = ordereditems,totalcost = totalcost,status = 'Pending').save()
 		messages.add_message(request,messages.ERROR,"Order Placed")
 	return redirect('userwelcomepage')
 
@@ -122,3 +122,20 @@ def logoutUser(request):
 	logout(request)
 	#return redirect('userwelcomepage')
 	return redirect('homepageview')
+
+def showOrdersAdmin(request):
+	orders = CustomerOrder.objects.all()
+	context = {'orders':orders}
+	return render(request,'pizzariaapp/showadminorders.html',context)
+
+def acceptOrder(request,orderid):
+	order = CustomerOrder.objects.filter(id = orderid)[0]
+	order.status = 'Accepted'
+	order.save()
+	return redirect(request.META['HTTP_REFERER'])
+
+def rejectOrder(request,orderid):
+	order = CustomerOrder.objects.filter(id = orderid)[0]
+	order.status = 'Rejected'
+	order.save()
+	return redirect(request.META['HTTP_REFERER'])
