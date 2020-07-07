@@ -4,6 +4,7 @@ from django.db import models
 class PizzaModel(models.Model):
 	name = models.CharField(max_length = 10)
 	price = models.CharField(max_length = 10)
+	pizza_image = models.ImageField(upload_to='pizzaImage/', null= True, blank = True)
 
 class CustomerModel(models.Model):
 	userid = models.CharField(max_length = 10)

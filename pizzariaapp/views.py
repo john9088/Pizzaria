@@ -27,6 +27,7 @@ def authenticateAdmin(request):
 
 def adminHomePageView(request):
 	pizzas = PizzaModel.objects.all()
+	print(pizzas[len(pizzas)-1].pizza_image.url)
 	context = {'pizzas':pizzas}
 	return render(request,"pizzariaapp/adminHomePage.html",context)
 
@@ -37,7 +38,9 @@ def logoutAdmin(request):
 def addAdminPizza(request):
 	pizzaName = request.POST['pizza']
 	pizzaPrice = request.POST['price']
-	PizzaModel(name = pizzaName, price = pizzaPrice).save()
+	pizzaPic = request.FILES['pizza-img']
+	
+	PizzaModel(name = pizzaName, price = pizzaPrice, pizza_image = pizzaPic).save()
 	return redirect('adminhomepage')
 
 def deleteAdminPizza(request,pizzaid):

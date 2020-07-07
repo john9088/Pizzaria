@@ -1,5 +1,5 @@
 {% extends 'base.html' %}
-
+{% load static %}
 {% block navbar %}
 	<nav class="nav-bar">
 
@@ -15,10 +15,12 @@
 {% block content %}	
 	<div class="admin-add-pizza">
 		<h3 style="text-align:center"><a Style="text-decoration:none" href="/adminshoworder/">Check Order</a><h3>
-		<form method="POST" action="/addadminpizza/">
+		<form method="POST" action="/addadminpizza/" enctype="multipart/form-data" style="margin: 5vh 2vw">
 			{% csrf_token %}
-			<input type="text" placeholder="Pizza" name="pizza">
-			<input type="text" placeholder="Price" name="price">
+			{{form.as_p}}
+			<input type="text" placeholder="Pizza" name="pizza"><br>
+			<input type="text" placeholder="Price" name="price"><br>
+			<input type="file" name="pizza-img"><br>
 			<input type="submit" name="" value="add"> 
 		</form>
 		<div class="admin-show-pizza">	
@@ -32,6 +34,7 @@
 				<tr>
 					<td>{{i.name}}</td>
 					<td>{{i.price}}</td>
+					<td><img src = "{{request.scheme}}://{{request.META.HTTP_HOST}}/{{i.pizza_image.url}}"></td>
 					<td><button ><a href="/deleteadminpizza/{{i.id}}">Delete</a></button></td>
 				</tr>
 				{% endfor %}
