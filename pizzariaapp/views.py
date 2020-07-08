@@ -27,7 +27,7 @@ def authenticateAdmin(request):
 
 def adminHomePageView(request):
 	pizzas = PizzaModel.objects.all()
-	print(pizzas[len(pizzas)-1].pizza_image.url)
+	#print(pizzas[len(pizzas)-1].pizza_image.url)
 	context = {'pizzas':pizzas}
 	return render(request,"pizzariaapp/adminHomePage.html",context)
 

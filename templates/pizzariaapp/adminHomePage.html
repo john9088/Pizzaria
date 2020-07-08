@@ -34,7 +34,7 @@
 				<tr>
 					<td>{{i.name}}</td>
 					<td>{{i.price}}</td>
-					<td><img src = "{{request.scheme}}://{{request.META.HTTP_HOST}}/{{i.pizza_image.url}}"></td>
+					<td><img class="pizza-img" src = "{{request.scheme}}://{{request.META.HTTP_HOST}}/{{i.pizza_image.url}}"></td>
 					<td><button ><a href="/deleteadminpizza/{{i.id}}">Delete</a></button></td>
 				</tr>
 				{% endfor %}
