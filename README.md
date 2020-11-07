@@ -1,2 +1,2 @@
 # Pizzaria
-A dynamic website to diaplay and order pizza
+A dynamic website to display and order pizza
